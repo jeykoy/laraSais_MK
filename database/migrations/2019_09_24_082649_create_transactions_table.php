@@ -4,21 +4,21 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStockinsTable extends Migration
+class CreateTransactionsTable extends Migration
 {
     /**
- * Run the migrations.
+     * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('stockins', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('itemId');
-            $table->unsignedInteger('quantityAdded');
+            $table->unsignedInteger('order_id');
+            $table->date('transactionDate');
+            $table->foreign('order_id')->references('id')->on('orderlists');
             $table->timestamps();
-            $table->foreign('itemId')->references('id')->on('users');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateStockinsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stockins');
+        Schema::dropIfExists('transactions');
     }
 }

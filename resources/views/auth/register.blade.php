@@ -68,7 +68,7 @@
                             </div>
                         </div>
 
-                        </div>
+                        
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -94,7 +94,7 @@
                         <div class="form-group row">
                             <label for="customer" hidden="true" class="col-md-4 col-form-label text-md-right">{{ __('customer') }}</label>
                             <div class="col-md-6">
-                                <input id="address" type="text" value="customer" hidden="true">
+                                <input id="address" type="text" name="role" value="customer" hidden="true">
                             </div>
                         </div>
 

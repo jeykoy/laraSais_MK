@@ -13,12 +13,13 @@ class CreateStockinsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('stockins', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedInteger('itemId');
-            $table->unsignedInteger('quantityAdded');
+            $table->increments('id');
+            $table->unsignedInteger('item_Id');
+            $table->foreign('item_Id')->references('id')->on('items');
+            $table->integer('quantityAdded');
             $table->timestamps();
-            $table->foreign('itemId')->references('id')->on('users');
         });
     }
 

@@ -14,11 +14,11 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('itemName');
             $table->string('description');
             $table->enum('variant',['Color','Skin Care','Body Care']);
-            $table->unsignedDecimal('price');
+            $table->decimal('price');
             $table->integer('currentStocks');
             $table->timestamps();
         });

@@ -13,13 +13,15 @@ class CreateOrderlistsTable extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::create('orderlists', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedInteger('itemId');
+            $table->increments('id');
+            $table->unsignedInteger('item_Id');
             $table->unsignedInteger('orderQuantity');
             $table->unsignedInteger('customer_Id');
-            $table->boolean('isDelivered')->default(false);
-            $table->foreign('customer_Id')->references('id')->on('customers');
+            $table->boolean('isDelivered')->default(false);            
+            $table->foreign('customer_Id')->references('id')->on('users');
+            $table->foreign('item_Id')->references('id')->on('items');
             $table->timestamps();
         });
     }

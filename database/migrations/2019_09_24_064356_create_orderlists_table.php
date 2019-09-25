@@ -19,7 +19,7 @@ class CreateOrderlistsTable extends Migration
             $table->unsignedInteger('item_Id');
             $table->unsignedInteger('orderQuantity');
             $table->unsignedInteger('customer_Id');
-            $table->boolean('isDelivered')->default(false);            
+            $table->boolean('isDelivered')->default(false);
             $table->foreign('customer_Id')->references('id')->on('users');
             $table->foreign('item_Id')->references('id')->on('items');
             $table->timestamps();

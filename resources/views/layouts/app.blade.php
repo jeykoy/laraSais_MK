@@ -223,17 +223,16 @@ a.article:hover {
 </head>
 
 <body>
-
-    <div class="wrapper">
-
-        <!-- Sidebar  -->
+@auth
+    <div class="wrapper">        <!-- Sidebar  -->
         <nav id="sidebar">
             <div id="dismiss">
                 <i class="fas fa-arrow-left"></i>
             </div>
 
             <div class="sidebar-header">
-                <h3>Logged in username</h3>
+                <p>{{ Auth::user()->name }}</p>
+
             </div>
 
             <ul class="list-unstyled components">
@@ -242,7 +241,14 @@ a.article:hover {
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Home 1</a>
+                          <div class="" aria-labelledby="">
+                                          <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                              {{ __('Logout') }}
+                                          </a>
+                                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                        </div>
                         </li>
                         <li>
                             <a href="#">Home 2</a>
@@ -253,8 +259,11 @@ a.article:hover {
                     </ul>
                 </li>
                 <li>
+                  <form class="" action="index.html" method="post">
 
-                    <a href="#">About</a>
+                  </form>
+
+
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
@@ -280,7 +289,7 @@ a.article:hover {
                 </li>
             </ul>
         </nav>
-
+@endauth
         <!-- Page Content  -->
         <div id="content">
 
@@ -297,7 +306,6 @@ a.article:hover {
                     </div>
                   </div>
 
-                </div>
             </nav>
 
             <main>
